@@ -372,7 +372,7 @@ Q: 大神，我懂了，你是让我放心大胆的去犯错！
 A: 开发经理不打断你的腿！
 </code></pre><p>git的分支管理不仅适合 <strong>有多人合作开发</strong> 的项目，也适合 <strong>只有一个开发者</strong> 的个人项目。</p>
 <p>下图是一个典型的git分支管理策略：</p>
-<p><img src="img/22.jpg" alt=""></p>
+<p><img src="/images/img/22.jpg" alt=""></p>
 <p>看不懂吧，下面我用通俗而优美的文字解读一下：</p>
 <p>假设：这个项目叫：helloworld，有2个开发者michael和bob，michael是项目的master，bob是developer。项目托管在gitlab上。</p>
 <p>在开始工作之前，关于分支有几点需要强调一下，强调一下，强调一下：</p>
@@ -405,11 +405,11 @@ A: 开发经理不打断你的腿！
 <p>关于tag的具体的用法在下一节详细说明一下。</p>
 <p>通过我上面通俗而又优美的文字描述，我想你一定看的脑袋都大了，没关系，我们看示例。</p>
 <h2 id="2-实践-项目开发场景"><a href="#2-实践-项目开发场景" class="headerlink" title="2. 实践-项目开发场景"></a>2. 实践-项目开发场景</h2><p>我(lizhixian)是helloworld的项目经理，我在gitlab上创建了一个helloworld项目</p>
-<p><img src="img/24.jpg" alt=""></p>
+<p><img src="/images/img/24.jpg" alt=""></p>
 <p>添加readme.md</p>
-<p><img src="img/27.jpg" alt=""></p>
+<p><img src="/images/img/27.jpg" alt=""></p>
 <p>我将micheal和bob加入到项目的members，并设定他们的权限</p>
-<p><img src="img/25.jpg" alt=""></p>
+<p><img src="/images/img/25.jpg" alt=""></p>
 <p>我将项目的地址告诉了micheal和bob</p>
 <pre><code>我：hi, micheam and bob.
 helloworld的仓库地址是：git@192.168.40.125:lizhixian/helloworld.git
@@ -418,30 +418,30 @@ helloworld的仓库地址是：git@192.168.40.125:lizhixian/helloworld.git
 micheal: 好的
 bob: 好的
 </code></pre><p>micheal从仓库地址clone项目到本地</p>
-<p><img src="img/26.jpg" alt=""></p>
+<p><img src="/images/img/26.jpg" alt=""></p>
 <p>此时只有master分支</p>
-<p><img src="img/28.jpg" alt=""></p>
+<p><img src="/images/img/28.jpg" alt=""></p>
 <p>Micheal在本地创建dev分支并push到gitlab上</p>
-<p><img src="img/29.jpg" alt=""></p>
+<p><img src="/images/img/29.jpg" alt=""></p>
 <p>此时gitlab上有master和dev两个分支</p>
-<p><img src="img/30.jpg" alt=""></p>
+<p><img src="/images/img/30.jpg" alt=""></p>
 <p>Micheal在本地创建micheal分支</p>
-<p><img src="img/31.jpg" alt=""></p>
+<p><img src="/images/img/31.jpg" alt=""></p>
 <p>Micheal的准备工作已经完成，下面轮到bob了</p>
-<p><img src="img/32.jpg" alt=""></p>
+<p><img src="/images/img/32.jpg" alt=""></p>
 <p>到此，helloworld项目的分支模型就创建完毕了。Micheal和bob可以分别在自己的feature分支上进行开发了。</p>
 <p>假如Micheal开发了一段时间以后，自测没有问题，可以提交到dev上，那么Micheal可以</p>
-<p><img src="img/33.jpg" alt=""></p>
+<p><img src="/images/img/33.jpg" alt=""></p>
 <p>我们看到Micheal合并micheal到dev是一路顺风的，没有冲突。那么假如遇到冲突怎么办，下面看看bob的合并</p>
-<p><img src="img/34.jpg" alt=""></p>
+<p><img src="/images/img/34.jpg" alt=""></p>
 <p>我们发现helloworld.txt有冲突了</p>
-<p><img src="img/35.jpg" alt=""></p>
+<p><img src="/images/img/35.jpg" alt=""></p>
 <p><strong>下面解决冲突，解决的过程需要冲突的双方共同来协商，这个东西机器不能帮助你自动完成。冲突解决完毕后，切记要add</strong></p>
-<p><img src="img/36.jpg" alt=""></p>
+<p><img src="/images/img/36.jpg" alt=""></p>
 <p>目前为止，已经给大家演示了git的分支管理策略，开发者通过dev分支来进行源代码的交换。</p>
 <p>上面只是演示了2个开发者的开发流程，如果有多个开发者的话，流程也是一致的，都是通过dev来做代码交换。</p>
 <p>如果dev上的代码已经测试完毕，暂时没有bug了，那么就可以合并到master上</p>
-<p><img src="img/37.jpg" alt=""></p>
+<p><img src="/images/img/37.jpg" alt=""></p>
 <p>下面再说一下分支管理的一些技巧：</p>
 <pre><code>1. 本地的dev分支最好每天都更新一下，保持与服务器的同步
 2. 如果dev有更新，就合并到自己的feature分支上。这样可以防止最后合并feature到dev的时候，出现灾难
@@ -475,7 +475,7 @@ To git@192.168.40.125:lizhixian/helloworld.git
  * [new tag]         v1.0 -&gt; v1.0
 [root@localhost helloworld]# 
 </code></pre><p>这时候就可以在gitlab上看到你推送的tag了</p>
-<p><img src="img/38.jpg" alt=""></p>
+<p><img src="/images/img/38.jpg" alt=""></p>
 <p>那么tag如何使用呢？很简单，简直一学就会</p>
 <p>假如helloworld已经开发到了v2.0，这时候v1.0发现了一出bug，我们需要进行修复</p>
 <pre><code>[root@localhost helloworld]# git checkout -b v1.0_bugfix v1.0
