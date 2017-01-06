@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.banxiaoyu.com/"/>
-  <updated>2017-01-05T02:09:34.875Z</updated>
+  <updated>2017-01-06T08:17:03.206Z</updated>
   <id>http://www.banxiaoyu.com/</id>
   
   <author>
@@ -14,6 +14,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql小技巧</title>
+    <link href="http://www.banxiaoyu.com/2017/01/06/mysql%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>http://www.banxiaoyu.com/2017/01/06/mysql小技巧/</id>
+    <published>2017-01-06T08:09:54.000Z</published>
+    <updated>2017-01-06T08:17:03.206Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Mysql-小技巧"><a href="#Mysql-小技巧" class="headerlink" title="Mysql 小技巧"></a>Mysql 小技巧</h1><hr>
+<h3 id="更新表a-字段url-该条记录中parent-id的url"><a href="#更新表a-字段url-该条记录中parent-id的url" class="headerlink" title="更新表a 字段url = 该条记录中parent_id的url"></a>更新表a 字段url = 该条记录中parent_id的url</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UPDATE dede_arctype a,dede_arctype b SET a.typedir = CONCAT(b.typedir,&apos;/&apos;,a.typedir) WHERE a.reid = b.id;</div></pre></td></tr></table></figure>
+<h3 id="连表更新字段"><a href="#连表更新字段" class="headerlink" title="连表更新字段"></a>连表更新字段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UPDATE 表1 a, 表2 b set a.parent_url = b.url;</div></pre></td></tr></table></figure>
+<h3 id="select-查出重复的记录"><a href="#select-查出重复的记录" class="headerlink" title="select 查出重复的记录"></a>select 查出重复的记录</h3><pre><code class="mysql">select * from 表 where n_id in(select s_name from 表 group by s_name,n_money,s_zhipiao,s_date,s_lixi
+    having count(s_name)&gt;1)
+</code></pre>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Mysql-小技巧&quot;&gt;&lt;a href=&quot;#Mysql-小技巧&quot; class=&quot;headerlink&quot; title=&quot;Mysql 小技巧&quot;&gt;&lt;/a&gt;Mysql 小技巧&lt;/h1&gt;&lt;hr&gt;
+&lt;h3 id=&quot;更新表a-字段url-该条记录中parent-id的url&quot;&gt;&lt;
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://www.banxiaoyu.com/tags/php/"/>
+    
+      <category term="mysql" scheme="http://www.banxiaoyu.com/tags/mysql/"/>
+    
+      <category term="update" scheme="http://www.banxiaoyu.com/tags/update/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>处理emoji表情</title>
+    <link href="http://www.banxiaoyu.com/2017/01/06/%E5%A4%84%E7%90%86emoji%E8%A1%A8%E6%83%85/"/>
+    <id>http://www.banxiaoyu.com/2017/01/06/处理emoji表情/</id>
+    <published>2017-01-06T07:09:44.000Z</published>
+    <updated>2017-01-06T08:22:01.572Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="3种方法轻松处理php开发中emoji表情的问题"><a href="#3种方法轻松处理php开发中emoji表情的问题" class="headerlink" title="3种方法轻松处理php开发中emoji表情的问题"></a>3种方法轻松处理php开发中emoji表情的问题</h2><p>投稿：daisy 字体：[增加 减小] 类型：转载 时间：2016-07-18 我要评论<br>移动设备经常会发生用户发送的内容中包含emoji表情，未经处理，在显示时就是乱码。所以本文介绍在PHP微信开发中涉及到emoji表情的几种处理方法。<br>背景<br>做微信开发的时候就会发现，存储微信昵称必不可少。<br>可这万恶的微信支持emoji表情做昵称，这就有点蛋疼了<br>一般Mysql表设计时，都是用UTF8字符集的。把带有emoji的昵称字段往里面insert一下就没了，整个字段变成了空字符串。这是怎么回事呢？<br>原来是因为Mysql的utf8字符集是3字节的，而emoji是4字节，这样整个昵称就无法存储了。这要怎么办呢？我来介绍几种方法<br>解决方案</p>
+<h3 id="1、使用utf8mb4字符集"><a href="#1、使用utf8mb4字符集" class="headerlink" title="1、使用utf8mb4字符集"></a>1、使用utf8mb4字符集</h3><p>如果你的mysql版本&gt;=5.5.3，你大可直接将utf8直接升级为utf8mb4字符集<br>这种4字节的utf8编码可完美兼容旧的3字节utf8字符集，并且可以直接存储emoji表情，是最好的解决方案<br>至于字节增大带来的性能损耗，我看过一些评测，几乎是可以忽略不计的</p>
+<h3 id="2、使用base64编码"><a href="#2、使用base64编码" class="headerlink" title="2、使用base64编码"></a>2、使用base64编码</h3><p>如果你因为某些原因无法使用utf8mb4的话，你还可以使用base64来曲线救国<br>使用例如base64_encode之类的函数编码过后的emoji可以直接存储在utf8字节集的数据表中，取出时decode一下即可</p>
+<h3 id="3、干掉emoji表情"><a href="#3、干掉emoji表情" class="headerlink" title="3、干掉emoji表情"></a>3、干掉emoji表情</h3><p>emoji表情是个麻烦的东西，即使你能存储，也不一定能完美显示。在iOS以外的平台上，例如PC或者android。如果你需要显示emoji，就得准备一大堆emoji图片并使用第三方前端类库才行。即便如此，还是可能因为emoji图片不够全而出现无法显示的情况在大多数业务场景下，emoji也不是非要不可的。我们可以适当地考虑干掉它，节约各种成本<br>经过一番苦苦的google，终于找到靠谱能用的代码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 过滤掉emoji表情</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterEmoji</span><span class="params">($str)</span></span></div><div class="line">&#123;</div><div class="line"> $str = preg_replace_callback(</div><div class="line"> <span class="string">'/./u'</span>,</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="params">(array $match)</span> </span>&#123;</div><div class="line"> <span class="keyword">return</span> strlen($match[<span class="number">0</span>]) &gt;= <span class="number">4</span> ? <span class="string">''</span> : $match[<span class="number">0</span>];</div><div class="line"> &#125;,</div><div class="line"> $str);</div><div class="line"> </div><div class="line"> <span class="keyword">return</span> $str;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>以上就是为大家总结的PHP微信开发中涉及到emoji表情的几种处理方法,基本思想就是遍历字符串中的每个字符，如果该字符的长度为4个字节，就将其删除。希望大家喜欢！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;3种方法轻松处理php开发中emoji表情的问题&quot;&gt;&lt;a href=&quot;#3种方法轻松处理php开发中emoji表情的问题&quot; class=&quot;headerlink&quot; title=&quot;3种方法轻松处理php开发中emoji表情的问题&quot;&gt;&lt;/a&gt;3种方法轻松处理php开发中
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://www.banxiaoyu.com/tags/php/"/>
+    
+      <category term="emoji表情" scheme="http://www.banxiaoyu.com/tags/emoji%E8%A1%A8%E6%83%85/"/>
+    
+  </entry>
   
   <entry>
     <title>php抽象类和抽象方法</title>
