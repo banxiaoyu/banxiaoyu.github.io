@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="3种方法轻松处理php开发中emoji表情的问题投稿：daisy 字体：[增加 减小] 类型：转载 时间：2016-07-18 我要评论移动设备经常会发生用户发送的内容中包含emoji表情，未经处理，在显示时就是乱码。所以本文介绍在PHP微信开发中涉及到emoji表情的几种处理方法。背景做微信开发的时候就会发现，存储微信昵称必不可少。可这万恶的微信支持emoji表情做昵称，这就有点蛋疼了一般Mys">
+<meta name="description" content="3种方法轻松处理php开发中emoji表情的问题移动设备经常会发生用户发送的内容中包含emoji表情，未经处理，在显示时就是乱码。所以本文介绍在PHP微信开发中涉及到emoji表情的几种处理方法。背景做微信开发的时候就会发现，存储微信昵称必不可少。可这万恶的微信支持emoji表情做昵称，这就有点蛋疼了一般Mysql表设计时，都是用UTF8字符集的。把带有emoji的昵称字段往里面insert一下就">
 <meta property="og:type" content="article">
 <meta property="og:title" content="处理emoji表情">
 <meta property="og:url" content="http://www.banxiaoyu.com/2017/01/06/处理emoji表情/index.html">
 <meta property="og:site_name" content="半小雨的博客">
-<meta property="og:description" content="3种方法轻松处理php开发中emoji表情的问题投稿：daisy 字体：[增加 减小] 类型：转载 时间：2016-07-18 我要评论移动设备经常会发生用户发送的内容中包含emoji表情，未经处理，在显示时就是乱码。所以本文介绍在PHP微信开发中涉及到emoji表情的几种处理方法。背景做微信开发的时候就会发现，存储微信昵称必不可少。可这万恶的微信支持emoji表情做昵称，这就有点蛋疼了一般Mys">
-<meta property="og:updated_time" content="2017-01-06T08:22:01.572Z">
+<meta property="og:description" content="3种方法轻松处理php开发中emoji表情的问题移动设备经常会发生用户发送的内容中包含emoji表情，未经处理，在显示时就是乱码。所以本文介绍在PHP微信开发中涉及到emoji表情的几种处理方法。背景做微信开发的时候就会发现，存储微信昵称必不可少。可这万恶的微信支持emoji表情做昵称，这就有点蛋疼了一般Mysql表设计时，都是用UTF8字符集的。把带有emoji的昵称字段往里面insert一下就">
+<meta property="og:updated_time" content="2017-01-06T08:24:37.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="处理emoji表情">
-<meta name="twitter:description" content="3种方法轻松处理php开发中emoji表情的问题投稿：daisy 字体：[增加 减小] 类型：转载 时间：2016-07-18 我要评论移动设备经常会发生用户发送的内容中包含emoji表情，未经处理，在显示时就是乱码。所以本文介绍在PHP微信开发中涉及到emoji表情的几种处理方法。背景做微信开发的时候就会发现，存储微信昵称必不可少。可这万恶的微信支持emoji表情做昵称，这就有点蛋疼了一般Mys">
+<meta name="twitter:description" content="3种方法轻松处理php开发中emoji表情的问题移动设备经常会发生用户发送的内容中包含emoji表情，未经处理，在显示时就是乱码。所以本文介绍在PHP微信开发中涉及到emoji表情的几种处理方法。背景做微信开发的时候就会发现，存储微信昵称必不可少。可这万恶的微信支持emoji表情做昵称，这就有点蛋疼了一般Mysql表设计时，都是用UTF8字符集的。把带有emoji的昵称字段往里面insert一下就">
 
 
 
@@ -347,7 +347,7 @@
       
 
       
-        <h2 id="3种方法轻松处理php开发中emoji表情的问题"><a href="#3种方法轻松处理php开发中emoji表情的问题" class="headerlink" title="3种方法轻松处理php开发中emoji表情的问题"></a>3种方法轻松处理php开发中emoji表情的问题</h2><p>投稿：daisy 字体：[增加 减小] 类型：转载 时间：2016-07-18 我要评论<br>移动设备经常会发生用户发送的内容中包含emoji表情，未经处理，在显示时就是乱码。所以本文介绍在PHP微信开发中涉及到emoji表情的几种处理方法。<br>背景<br>做微信开发的时候就会发现，存储微信昵称必不可少。<br>可这万恶的微信支持emoji表情做昵称，这就有点蛋疼了<br>一般Mysql表设计时，都是用UTF8字符集的。把带有emoji的昵称字段往里面insert一下就没了，整个字段变成了空字符串。这是怎么回事呢？<br>原来是因为Mysql的utf8字符集是3字节的，而emoji是4字节，这样整个昵称就无法存储了。这要怎么办呢？我来介绍几种方法<br>解决方案</p>
+        <h2 id="3种方法轻松处理php开发中emoji表情的问题"><a href="#3种方法轻松处理php开发中emoji表情的问题" class="headerlink" title="3种方法轻松处理php开发中emoji表情的问题"></a>3种方法轻松处理php开发中emoji表情的问题</h2><p>移动设备经常会发生用户发送的内容中包含emoji表情，未经处理，在显示时就是乱码。所以本文介绍在PHP微信开发中涉及到emoji表情的几种处理方法。<br>背景<br>做微信开发的时候就会发现，存储微信昵称必不可少。<br>可这万恶的微信支持emoji表情做昵称，这就有点蛋疼了<br>一般Mysql表设计时，都是用UTF8字符集的。把带有emoji的昵称字段往里面insert一下就没了，整个字段变成了空字符串。这是怎么回事呢？<br>原来是因为Mysql的utf8字符集是3字节的，而emoji是4字节，这样整个昵称就无法存储了。这要怎么办呢？我来介绍几种方法<br>解决方案</p>
 <h3 id="1、使用utf8mb4字符集"><a href="#1、使用utf8mb4字符集" class="headerlink" title="1、使用utf8mb4字符集"></a>1、使用utf8mb4字符集</h3><p>如果你的mysql版本&gt;=5.5.3，你大可直接将utf8直接升级为utf8mb4字符集<br>这种4字节的utf8编码可完美兼容旧的3字节utf8字符集，并且可以直接存储emoji表情，是最好的解决方案<br>至于字节增大带来的性能损耗，我看过一些评测，几乎是可以忽略不计的</p>
 <h3 id="2、使用base64编码"><a href="#2、使用base64编码" class="headerlink" title="2、使用base64编码"></a>2、使用base64编码</h3><p>如果你因为某些原因无法使用utf8mb4的话，你还可以使用base64来曲线救国<br>使用例如base64_encode之类的函数编码过后的emoji可以直接存储在utf8字节集的数据表中，取出时decode一下即可</p>
 <h3 id="3、干掉emoji表情"><a href="#3、干掉emoji表情" class="headerlink" title="3、干掉emoji表情"></a>3、干掉emoji表情</h3><p>emoji表情是个麻烦的东西，即使你能存储，也不一定能完美显示。在iOS以外的平台上，例如PC或者android。如果你需要显示emoji，就得准备一大堆emoji图片并使用第三方前端类库才行。即便如此，还是可能因为emoji图片不够全而出现无法显示的情况在大多数业务场景下，emoji也不是非要不可的。我们可以适当地考虑干掉它，节约各种成本<br>经过一番苦苦的google，终于找到靠谱能用的代码：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 过滤掉emoji表情</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterEmoji</span><span class="params">($str)</span></span></div><div class="line">&#123;</div><div class="line"> $str = preg_replace_callback(</div><div class="line"> <span class="string">'/./u'</span>,</div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="params">(array $match)</span> </span>&#123;</div><div class="line"> <span class="keyword">return</span> strlen($match[<span class="number">0</span>]) &gt;= <span class="number">4</span> ? <span class="string">''</span> : $match[<span class="number">0</span>];</div><div class="line"> &#125;,</div><div class="line"> $str);</div><div class="line"> </div><div class="line"> <span class="keyword">return</span> $str;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
